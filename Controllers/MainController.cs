@@ -14,7 +14,7 @@ public class MainController : Controller
     private const string ApiUrl = "https://api.openai.com/v1/images/generations";
     private void WriteToTextFile(string text)
     {
-        string filePath = Path.Combine(_env.ContentRootPath, "wwwroot/Inputs.txt");
+        string filePath = Path.Combine(_env.ContentRootPath, "wwwroot/TextGenerations.txt");
         System.IO.File.AppendAllText(filePath, text);
     }
     private void ConfigureHttpClient(IConfiguration configuration)

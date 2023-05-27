@@ -1,3 +1,16 @@
 @model ImageViewModel
 
-<img src="@Model.ImageUrl" />
+<nav class="fixed top-0 w-full bg-stone-900 text-center p-4 text-lg">
+    <a asp-action="Index" class="font-bold underline text-blue-500 flex items-center justify-center gap-2">
+        <span>Generate a different image</span>
+        <img src="~/svg/arrows-rotate.svg" class="w-5 h-5" />
+    </a>
+</nav>
+
+<div class="w-full flex flex-col justify-center items-center gap-6">
+    <header class="text-4xl font-bold text-center">
+        Image
+    </header>
+
+    <img src="@Model.ImageUrl" class="w-1/2 p-2 border-2 border-white portrait:w-11/12" />
+</div>
