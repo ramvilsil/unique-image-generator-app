@@ -1,0 +1,25 @@
+@model TextToImageViewModel
+
+<div class="w-full pt-20 pb-20">
+
+    <form asp-action="GenerateImageFromText" method="post"
+        class="m-auto w-1/2 p-4 bg-white text-black rounded-lg flex items-center justify-center gap-4 portrait:flex-col portrait:w-11/12">
+        @Html.AntiForgeryToken()
+
+        <div class="flex flex-col">
+            <label>Input</label>
+            <input asp-for=" @Model.InputText" type="text" placeholder="Prompt..." required
+                class="bg-stone-200 rounded-lg p-4 focus:bg-white focus:outline-none focus:ring-2" />
+        </div>
+
+        <div class="flex flex-col">
+            <label>App Password</label>
+            <input asp-for=" @Model.AppPassword" type="password" placeholder="App Password..." required
+                class="bg-stone-200 rounded-lg p-4 focus:bg-white focus:outline-none focus:ring-2" />
+        </div>
+
+        <input type="submit" value="Generate"
+            class="bg-white p-2 shadow-lg shadow-black rounded-lg hover:bg-stone-200 hover:cursor-pointer" />
+    </form>
+
+</div>

@@ -1,0 +1,10 @@
+.vs
+.vscode
+bin
+obj
+Properties
+appsettings.Development.json
+appsettings.json
+.fake
+
+Application.csproj.user
