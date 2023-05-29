@@ -1,7 +1,7 @@
 namespace Application.ViewModels;
 
-public class TextToImageViewModel
+public class ImageToVariantViewModel
 {
     public string AppPassword { get; set; } = null!;
-    public string InputText { get; set; } = null!;
+    public IFormFile ImageFile { get; set; } = null!;
 }

@@ -1,11 +1,12 @@
-@model TextToImageViewModel
+@model ImageToVariantViewModel
 
 <div class="w-full flex flex-col justify-center items-center gap-6">
     <header class="text-4xl font-bold text-center">
-        Text to Image
+        Image to Variant
     </header>
 
-    <form asp-action="GenerateImageFromText" method="post"
+    <form asp-action="GenerateImageVariant" method="post" enctype="multipart/form-data"
+        onsubmit="return validateFileExtension();"
         class="m-auto w-1/2 p-4 bg-white text-black rounded-lg flex flex-col items-center justify-center gap-4 portrait:w-11/12">
         @Html.AntiForgeryToken()
 
@@ -16,8 +17,8 @@
         </div>
 
         <div class="w-full flex flex-col">
-            <label class="font-medium">Text Input</label>
-            <input asp-for="@Model.InputText" type="text" placeholder="Enter your text prompt..." required
+            <label class="font-medium">Image Upload (PNG files only)</label>
+            <input id="fileUpload" asp-for="@Model.ImageFile" type="file" required
                 class="bg-stone-200 rounded-lg p-4 focus:bg-white focus:outline-none focus:ring-2" />
         </div>
 
@@ -25,3 +26,19 @@
             class="w-full m-4 p-2 bg-amber-500 text-white font-bold text-lg text-center shadow-md shadow-stone-900 rounded-lg hover:bg-amber-200 hover:cursor-pointer" />
     </form>
 </div>
+
+<script>
+    function validateFileExtension() {
+        let fileInput = document.getElementById('fileUpload');
+        let filePath = fileInput.value;
+        const allowedExtensions = /(\.png)$/i;
+
+        if (!allowedExtensions.exec(filePath)) {
+            alert('Invalid file extension. Only PNG files are allowed.');
+            fileInput.value = '';
+            return false;
+        }
+
+        return true;
+    }
+</script>

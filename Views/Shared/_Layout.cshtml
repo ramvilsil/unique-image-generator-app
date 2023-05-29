@@ -13,12 +13,39 @@
 
 <body class="bg-stone-800 text-white">
 
-    <main role="main" class="pt-20 pb-20">
+    <nav
+        class="fixed top-0 w-full bg-stone-900 text-center p-4 text-lg font-bold flex items-center justify-center gap-4">
+
+        <img src="~/svg/arrows-rotate.svg" class="w-5 h-5" />
+        <a asp-controller="Main" asp-action="Index" class="underline-offset-4 hover:underline">
+            Unique Image Generator
+        </a>
+    </nav>
+
+    <main role="main" class="pt-24 pb-24">
         @RenderBody()
     </main>
 
-    <footer class="w-full bg-stone-900 p-4">
-        &copy; @DateTime.Now.Year Unique Image Generator
+    <footer class="w-full bg-stone-900 p-4 flex items-center justify-center">
+
+        <div class="w-11/12 flex justify-evenly gap-8 portrait:flex-col portrait:justify-start">
+            <div class="flex flex-col justify-center gap-3">
+                <div class="font-medium">
+                    This app was custom built with
+                </div>
+                <div class="flex flex-col justify-center gap-1">
+                    <a>DALL·E</a>
+                    <a>ASP.NET Core 7.0</a>
+                    <a>Tailwind CSS</a>
+                    <a>C#</a>
+                </div>
+            </div>
+
+            <div>
+                &copy; @DateTime.Now.Year
+            </div>
+        </div>
+
     </footer>
 
 </body>

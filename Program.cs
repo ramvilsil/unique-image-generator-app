@@ -1,4 +1,9 @@
+using Application.Services;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<TextToImage>();
+builder.Services.AddScoped<ImageToVariant>();
 
 builder.Services.AddHttpClient();
 builder.Services.AddControllersWithViews();
