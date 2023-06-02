@@ -9,7 +9,6 @@ public class TextToImage
     private const string ApiUrl = "https://api.openai.com/v1/images/generations";
     private readonly HttpClient _httpClient;
     private readonly IConfiguration _configuration;
-    private readonly IHostEnvironment _env;
     private void ConfigureHttpClient(IConfiguration configuration)
     {
         var apiKey = configuration.GetValue<string>("OpenAIApi:SecretKey");
@@ -20,14 +19,12 @@ public class TextToImage
     public TextToImage
     (
         IConfiguration configuration,
-        IHttpClientFactory httpClientFactory,
-        IHostEnvironment env
+        IHttpClientFactory httpClientFactory
     )
     {
         _configuration = configuration;
         _httpClient = httpClientFactory.CreateClient();
         ConfigureHttpClient(configuration);
-        _env = env;
     }
 
     public async Task<string?> GenerateImageFromText(string inputText)

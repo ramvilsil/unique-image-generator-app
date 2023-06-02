@@ -9,7 +9,6 @@ public class ImageToVariant
     const string ApiUrl = "https://api.openai.com/v1/images/variations";
     private readonly HttpClient _httpClient;
     private readonly IConfiguration _configuration;
-    private readonly IHostEnvironment _env;
     private void ConfigureHttpClient(IConfiguration configuration)
     {
         var apiKey = configuration.GetValue<string>("OpenAIApi:SecretKey");
@@ -19,14 +18,12 @@ public class ImageToVariant
     public ImageToVariant
     (
         IConfiguration configuration,
-        IHttpClientFactory httpClientFactory,
-        IHostEnvironment env
+        IHttpClientFactory httpClientFactory
     )
     {
         _configuration = configuration;
         _httpClient = httpClientFactory.CreateClient();
         ConfigureHttpClient(configuration);
-        _env = env;
     }
 
     public async Task<string?> GenerateImageVariant(IFormFile imageFile)
